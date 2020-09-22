@@ -3,6 +3,8 @@ package config;
 import model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DataBaseConn {
@@ -39,45 +41,40 @@ public class DataBaseConn {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-   /* public ResultSet selectBase(Ship ship) {
-        ResultSet resultSet = null;
-        String select = "SELECT * FROM " + Config.DBTABLE + " WHERE name =?";
-        try {
-            PreparedStatement psSt = getConnection().prepareStatement(select);
-            psSt.setString(1, ship.getName());
-            resultSet = psSt.executeQuery();
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return resultSet;
     }
 
-    public List<Ship> listBase() {
-        List<Ship> shipList = new ArrayList<>();
+    /* public ResultSet selectBase(Ship ship) {
+         ResultSet resultSet = null;
+         String select = "SELECT * FROM " + Config.DBTABLE + " WHERE name =?";
+         try {
+             PreparedStatement psSt = getConnection().prepareStatement(select);
+             psSt.setString(1, ship.getName());
+             resultSet = psSt.executeQuery();
+
+         } catch (SQLException throwables) {
+             throwables.printStackTrace();
+         }
+         return resultSet;
+     }
+ }*/
+    public List<User> listBase() {
+        List<User> list = new ArrayList<>();
         String s = "SELECT * FROM " + Config.DBTABLE;
         try {
             PreparedStatement psSt = getConnection().prepareStatement(s);
             ResultSet resultSet = psSt.executeQuery();
 
             while (resultSet.next()) {
-                Ship ship = new Ship();
-                ship.setId((long) resultSet.getInt(1));
-                ship.setName(resultSet.getString(2));
-                ship.setPlanet(resultSet.getString(3));
-                ship.setShipType(ShipType.valueOf(resultSet.getString(4)));
-                ship.setProdDate(resultSet.getDate(5));
-                ship.setUsed(resultSet.getBoolean(6));
-                ship.setSpeed(resultSet.getDouble(7));
-                ship.setCrewSize(resultSet.getInt(8));
-                ship.setRating(resultSet.getDouble(9));
-                shipList.add(ship);
+               User user = new User();
+                user.setId((long) resultSet.getInt(1));
+                user.setName(resultSet.getString(2));
+                user.setEmail(resultSet.getString(3));
+                user.setText(resultSet.getString(4));
+                list.add(user);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return shipList;
-    }*/
+        return list;
     }
 }

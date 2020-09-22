@@ -10,11 +10,6 @@ import java.io.*;
 @WebServlet(name = "servlets.addFile")
 public class addFile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         File file = new File(request.getParameter("way"));
 
         String name = request.getParameter("name");
@@ -31,5 +26,10 @@ public class addFile extends HttpServlet {
             fileWriter.write("Text: " + text + "\n");
         }
         response.sendRedirect("/add.html");
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
     }
 }

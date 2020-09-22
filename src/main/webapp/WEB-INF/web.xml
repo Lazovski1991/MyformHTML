@@ -29,4 +29,12 @@
         <servlet-name>mainServ</servlet-name>
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>listDb</servlet-name>
+        <jsp-file>/listBD.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listDb</servlet-name>
+        <url-pattern>/listDB</url-pattern>
+    </servlet-mapping>
 </web-app>
