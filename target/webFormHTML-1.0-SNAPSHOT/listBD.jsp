@@ -1,6 +1,4 @@
-<%@ page import="config.DataBaseConn" %>
 <%@ page import="model.User" %>
-<%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
@@ -19,13 +17,10 @@
 
 <% List<User> list = (ArrayList<User>) request.getAttribute("list"); %>
 <%
-
-
     for (User pair : list) {
 %>
-<div><%=pair.getName()%>
+<div><a href="/addBase?name=<%=pair.getName()%>"><%=pair.getName()%> </a>
 </div>
-
 <%
     }
 %>

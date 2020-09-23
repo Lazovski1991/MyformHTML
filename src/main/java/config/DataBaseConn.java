@@ -43,20 +43,28 @@ public class DataBaseConn {
         }
     }
 
-    /* public ResultSet selectBase(Ship ship) {
+     public User selectBase(User user) {
+         User newUser = new User();
          ResultSet resultSet = null;
          String select = "SELECT * FROM " + Config.DBTABLE + " WHERE name =?";
          try {
              PreparedStatement psSt = getConnection().prepareStatement(select);
-             psSt.setString(1, ship.getName());
+             psSt.setString(1, user.getName());
              resultSet = psSt.executeQuery();
+             while (resultSet.next()) {
+                 newUser.setId(resultSet.getLong(1));
+                 newUser.setName(resultSet.getString(2));
+                 newUser.setEmail(resultSet.getString(3));
+                 newUser.setText(resultSet.getString(4));
+             }
+
 
          } catch (SQLException throwables) {
              throwables.printStackTrace();
          }
-         return resultSet;
+         return newUser;
      }
- }*/
+
     public List<User> listBase() {
         List<User> list = new ArrayList<>();
         String s = "SELECT * FROM " + Config.DBTABLE;

@@ -19,7 +19,7 @@
 <%
     for (User pair : list) {
 %>
-<div><%=pair.getName()%>
+<div><a href="/addBase?name=<%=pair.getName()%>"><%=pair.getName()%> </a>
 </div>
 <%
     }
